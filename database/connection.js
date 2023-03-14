@@ -1,12 +1,23 @@
-// async function connect(user){
-//     const Pool = require("pg").Pool
-//     const pool = new Pool({host:"db.vaztmyrjdwbslzswxqtm.supabase.co", user: "postgres", password:"Juanpa2010..",port: 5432, database:"postgres"})
-//     client.connect()
-//     const res = await client.query(`insert into Users (id,user,password,rol) values (${user.id},${user.username},${user.password},${user.rol}`)
-//     con.end()
-//     return res
+const {Client} = require("pg")
 
-// }
+const client = new Client({
+    host: "localhost",
+    user: "postgres",
+    port: 5432,
+    password: "root",
+    database: "postgres"
+})
 
+client.connect()
 
-// module.exports = {add_user,connect}
+client.query('SELECT * from users',(res,err)=>{
+    console.log("entramos")
+    if (!err){
+        console.log(res.rows)
+    }
+    else{
+        console.log(err.message)
+    }
+
+    client.end
+})

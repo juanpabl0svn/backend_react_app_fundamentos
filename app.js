@@ -1,6 +1,4 @@
 // import {add_user,connect} from "./database/connection.js"
-
-
 const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
@@ -14,10 +12,8 @@ app.use(bodyParser.json())
 
 app.get("/getUser/:infoUser",(req,res)=> {
     let user = JSON.parse(req.params.infoUser)
-    let con = connect()
-    let answer = add_user(con,user)
-    return answer
 
+    res.status(200).send(user)
 })
 
 
